@@ -5,8 +5,8 @@ public class Ellipse extends Shape {
     
     public Ellipse(String name, double axis1, double axis2) {
         super(name);
-        this.a = Math.max(axis1, axis2);  // larger to a
-        this.b = Math.min(axis1, axis2);  // smaller to b
+        this.a = Math.max(axis1, axis2);  //larger value to a
+        this.b = Math.min(axis1, axis2);  //smaller value to b
     }
 
     // Getter for major axis
@@ -29,7 +29,7 @@ public class Ellipse extends Shape {
         this.b = b;
     }
 
-    // calculate perimeter ,got a lot of help with this one im bad at math
+    // calculate perimeter
     @Override
     public double getPerimeter() {
         return Math.PI * (3 * (a + b) - Math.sqrt((3 * a + b) * (a + 3 * b)));
@@ -41,7 +41,17 @@ public class Ellipse extends Shape {
         return Math.PI * a * b;
     }
 
-    // method from Shape.java
+    
+    @Override
+    public void scale(double factor) {
+        if (factor <= 0) {
+            throw new IllegalArgumentException("Scale factor must be positive.");
+        }
+        this.a *= factor;
+        this.b *= factor;
+    }
+
+    
     @Override
     public String toString() {
         return super.toString();

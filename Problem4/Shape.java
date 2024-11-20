@@ -1,7 +1,7 @@
-public abstract class Shape {
+public abstract class Shape implements Scalable {
     private String name;  // Name of the shape
 
-    //  init Shape object
+    
     public Shape(String name) {
         this.name = name;
     }

@@ -3,13 +3,13 @@ public class Triangle extends Shape {
     private double side2;
     private double side3;
 
-    
+    // init Triangle
     public Triangle(String name, double s1, double s2, double s3) {
         super(name);
-        // this one was so hard i know you have it in the instructions but i just didnt understand how it worked 
+        
         if (s1 + s2 <= s3 || s2 + s3 <= s1 || s3 + s1 <= s2) {
-            System.err.println("wrong again"); // had to make this cause i kept messing up 
-            System.exit(1); 
+            System.err.println("Error: The given sides do not form a valid triangle.");
+            System.exit(1);  
         }
         this.side1 = s1;
         this.side2 = s2;
@@ -52,14 +52,25 @@ public class Triangle extends Shape {
         return side1 + side2 + side3;
     }
 
-    // calculate area, same here im bad at math lol
+    // calculate area 
     @Override
     public double getArea() {
-        double s = getPerimeter() / 2;  
+        double s = getPerimeter() / 2;  // Semi-perimeter
         return Math.sqrt(s * (s - side1) * (s - side2) * (s - side3));
     }
 
-    // display Triangle details
+    // scale method
+    @Override
+    public void scale(double factor) {
+        if (factor <= 0) {
+            throw new IllegalArgumentException("Scale factor must be positive.");
+        }
+        this.side1 *= factor;
+        this.side2 *= factor;
+        this.side3 *= factor;
+    }
+
+
     @Override
     public String toString() {
         return super.toString() + ", Sides: (" + side1 + ", " + side2 + ", " + side3 + ")";
