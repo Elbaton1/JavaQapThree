@@ -2,7 +2,7 @@ public class CollegeStudent extends Student {
     private int year;         // Current year in college 
     private String major;     // Major of student
 
-    // Constructor to initialize CollegeStudent object
+    // init CollegeStudent
     public CollegeStudent(String name, int age, String gender, String idNum, double gpa, int year, String major) {
         super(name, age, gender, idNum, gpa);  
         this.year = year;
